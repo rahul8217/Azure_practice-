@@ -1,0 +1,30 @@
+#open in Jupyter notebook 
+
+from azure.storage.blob import BlobClient
+
+
+
+# File to upload
+upload_file_path="C:\\Users\\RahulKumar\\Downloads\\MY_DATA(RAHUL)\\Broadcast_Data\\started_streams.csv"
+
+
+
+# SAS URL
+sas_url= "https://storageparctice.blob.core.windows.net/consumer-devtst/Rahul_code/started_streams.csv?sv=2020-08-04&ss=bfqt&srt=sco&sp=rwdlacupx&se=2022-05-12T13:21:05Z&st=2022-05-12T05:21:05Z&spr=https&sig=sAxT5HItdLCfhLUcvbHsFYuKzKUitOm3TetuvW6shuY%3D"
+
+
+
+# Passing Values
+client = BlobClient.from_blob_url(sas_url)
+
+
+
+# Start upload
+with open(upload_file_path,'rb') as data:
+     client.upload_blob(data)
+
+
+
+# Print upload status
+print("file uploaded sucessfully ")
+
